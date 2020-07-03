@@ -43,3 +43,4 @@ twitterBtn.addEventListener('click', tweetQuote);
 
 // On Load 
 getQuote();
+//Things look good!
