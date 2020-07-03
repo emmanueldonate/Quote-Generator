@@ -20,16 +20,26 @@ async function getQuote() {
         }
         // Reduce font size for long quotes
         if (data.quoteText.length > 120) {
-            quoteText?.classList.add('long-quote');
+            quoteText.classList.add('long-quote');
         } else {
             quoteText.classList.remove('long-quote');
         }
         quoteText.innerText = data.quoteText;
     } catch (error) {
-        getQuote();
-       
+        getQuote();  
     }
 }
+
+function tweetQuote() {
+    const quote = quoteText.innerText;
+    const author = authorText.innerText;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
+    window.open(twitterUrl, '_blank');
+}
+
+// Event Listeners
+newQuoteBtn.addEventListener('click', getQuote);
+twitterBtn.addEventListener('click', tweetQuote);
 
 // On Load 
 getQuote();
